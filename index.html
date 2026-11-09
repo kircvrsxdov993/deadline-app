@@ -1,16 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>My deadlines app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои дедлайны</title>
+    <!-- Подключаем красивый мягкий шрифт Quicksand из Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F7F5F0;        /* Сливочный пастельный фон */
+            --card-bg: #FFFFFF;         /* Белый цвет карточек */
+            --text-main: #4A403A;       /* Глубокий серо-коричневый текст */
+            --accent: #D8A47F;          /* Пыльная роза / персиковый акцент */
+            --accent-hover: #C5936F;    /* Цвет кнопки при наведении */
+            --shadow: 0 10px 30px rgba(74, 64, 58, 0.06); /* Мягкая тень */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 420px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            color: var(--text-main);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #E6DFD5;
+            border-radius: 12px;
+            background-color: #FAF8F5;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 15px;
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="datetime-local"]:focus {
+            border-color: var(--accent);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(216, 164, 127, 0.15);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--accent-hover);
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.98);
+        }
+    </style>
 </head>
 <body>
-    <h1>Create deadline</h1>
-    <form id="pushForm">
-        <label>Deadline name: <input type="text" id="title" required></label><br><br>
-        <label>Notification time: <input type="datetime-local" id="notifyTime" required></label><br><br>
-        <button type="submit">To plan</button>
-    </form>
+
+    <div class="container">
+        <h1>Создать дедлайн</h1>
+        <form id="pushForm">
+            <div class="form-group">
+                <label for="title">Название дедлайна:</label>
+                <input type="text" id="title" placeholder="например, Сдать проект" required>
+            </div>
+            <div class="form-group">
+                <label for="notifyTime">Время уведомления:</label>
+                <input type="datetime-local" id="notifyTime" required>
+            </div>
+            <button type="submit">Запланировать</button>
+        </form>
+    </div>
 
     <script src="app.js"></script>
 </body>
