@@ -2,11 +2,14 @@ const express = require('express');
 const webpush = require('web-push');
 const bodyParser = require('body-parser');
 const Database = require('better-sqlite3');
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static('public'));
-
+app.use(express.static(__dirname));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 const publicVapidKey = 'BND8q8T8vYfSufLZWLTwM_EUL_tgINYQ9tbc29JTDsC0rkf52cE0IZIP_UcUNGipb-qpCkUfLkhHRd7JqbOC7F4';
 const privateVapidKey = 'MYMuW-V39_ew7bB2JnotYGX0ru65DnJY11O_Jt64hJY';
 
